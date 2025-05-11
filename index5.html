@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QR Dev Code</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h2 class="brand-title">QR Dev Code</h2>
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub Logo" class="logo" />
+      <p>Insira o link do seu projeto localizado no GitHub e personalize seu QR Code</p>
+
+      <input type="text" id="url" placeholder="Ex: https://meuprojeto.com" />
+
+      <div class="color-row">
+        <div>
+          <label for="corFrente">Cor do QR</label>
+          <input type="color" id="corFrente" value="#ffffff" />
+        </div>
+        <div>
+          <label for="corFundo">Fundo</label>
+          <input type="color" id="corFundo" value="#1c2128" />
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button onclick="gerarQRCode()">Gerar QR Code</button>
+        <button onclick="baixarQRCode()">Baixar como PNG</button>
+      </div>
+    </div>
+
+    <div class="right">
+      <canvas id="qrcode" width="250" height="250"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
+  <script src="script5.js"></script>
+</body>
+</html>
