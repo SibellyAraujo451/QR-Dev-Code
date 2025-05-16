@@ -52,13 +52,7 @@ body {
   margin-bottom: 20px;
 }
 
-h1 {
-  margin-bottom: 10px;
-  color: #f0f6fc;
-  font-size: 24px;
-}
-
-p {
+.p {
   color: #8b949e;
   margin-bottom: 25px;
   font-size: 14px;
@@ -75,7 +69,7 @@ input[type="text"] {
   font-size: 14px;
 }
 
-input[type="color"] {
+.color-row input[type="color"] {
   width: 100%;
   height: 40px;
   border: none;
@@ -91,7 +85,7 @@ input[type="color"] {
   gap: 10px;
 }
 
-button {
+.button {
   background-color: #238636;
   color: white;
   padding: 12px;
@@ -102,11 +96,11 @@ button {
   transition: background 0.3s ease;
 }
 
-button:hover {
+.button:hover {
   background-color: #2ea043;
 }
 
-canvas {
+.canvas {
   background: white;
   padding: 12px;
   border-radius: 12px;
@@ -122,7 +116,7 @@ canvas {
   margin-bottom: 10px;
 }
 
-label {
+.label {
   font-size: 13px;
   color: #c9d1d9;
   display: block;
@@ -130,7 +124,7 @@ label {
   text-align: left;
 }
 
-.color-row > div {
+.color-row .color-row-item {
   flex: 1;
 }
 
