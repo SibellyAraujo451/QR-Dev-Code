@@ -1,45 +1,60 @@
-let qr = new QRious({
-      element: document.getElementById('qrcode'),
-      size: 250,
-      value: ''
-    });
+"use strict";
 
-    const urlInput = document.getElementById('url');
-    const corFrenteInput = document.getElementById('corFrente');
-    const corFundoInput = document.getElementById('corFundo');
+const qr = new QRious({
+  element: document.getElementById('qrcode'),
+  size: 250,
+  value: ''
+});
 
-    function validarURL(url) {
-      const regex = /^(https?:\/\/)?([\w.-]+)+(:\d+)?(\/\S*)?$/;
-      return regex.test(url);
-    }
+const urlInput = document.getElementById('url');
+const corFrenteInput = document.getElementById('corFrente');
+const corFundoInput = document.getElementById('corFundo');
 
-    function atualizarQRCode() {
-      const url = urlInput.value.trim();
-      if (!validarURL(url)) return;
+function urlFoiEspecificada() {
+  if (!urlInput.value){
+    alert('Nenhuma URL foi especificada!');
+    return false;
+  }
 
-      qr.set({
-        value: url,
-        foreground: corFrenteInput.value,
-        background: corFundoInput.value
-      });
-    }
+  return true;
+}
 
-    function gerarQRCode() {
-      atualizarQRCode();
-    }
+function urlValida() {
+  try {
+    new URL( urlInput.value.trim() );
 
-    function baixarQRCode() {
-      if (!qr.value) {
-        alert("Gere um QR Code antes de baixar.");
-        return;
-      }
-      const link = document.createElement('a');
-      link.download = 'qr_code_' + new Date().getTime() + '.png';
-      link.href = document.getElementById('qrcode').toDataURL("image/png");
-      link.click();
-    }
+  } catch(ex) {
+    alert('URL inválida!');
+    return false;
+  }
 
-    urlInput.addEventListener('input', atualizarQRCode);
-    corFrenteInput.addEventListener('input', atualizarQRCode);
-    corFundoInput.addEventListener('input', atualizarQRCode);
- 
+  return true;
+}
+
+function atualizarQRCode() {
+  qr.set({
+    value: urlInput.value.trim(),
+    foreground: corFrenteInput.value,
+    background: corFundoInput.value
+  });
+}
+
+function gerarQRCode() {
+  if (!urlFoiEspecificada() || !urlValida())
+    return;
+
+  atualizarQRCode();
+}
+
+function baixarQRCode() {
+  if (!urlFoiEspecificada() || !urlValida())
+    return;
+
+  const link = document.createElement('a');
+  link.download = 'qr_code_' + new Date().getTime() + '.png';
+  link.href = document.getElementById('qrcode').toDataURL('image/png');
+  link.click();
+}
+
+corFrenteInput.addEventListener('input', atualizarQRCode);
+corFundoInput.addEventListener('input', atualizarQRCode);
