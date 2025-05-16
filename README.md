@@ -4,7 +4,6 @@ Aplicação web interativa para gerar QR Codes personalizados a partir de links 
 ## 🧩 Funcionalidades
  - Geração dinâmica de QR Code a partir de uma URL
  -  Personalização das cores do QR Code e do fundo
- -  Visualização em tempo real conforme o usuário digita
  -  Download do QR Code como imagem PNG
  -  Layout responsivo com efeito de glassmorphism
 
